@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- BS4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- QUẢN LÝ TUYỂN SINH -->
+    <div class="container">
+        <div class="mt-2">
+            <h4 class="text-center my-3">QUẢN LÝ TUYỂN SINH</h4>
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <input class="form-control" id="chuan" placeholder="Điểm chuẩn">
+                </div>
+                <div class="form-group col-3 mx-3">
+                    <select id="khuvuc" class="form-control">
+                        <option selected>Chọn khu vực</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <select id="doituong" class="form-control">
+                        <option selected>Chọn đối tượng</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <input class="form-control" id="mon1" placeholder="Điểm môn 1">
+                </div>
+                <div class="form-group col-3 mx-3">
+                    <input class="form-control" id="mon2" placeholder="Điểm môn 2">
+                </div>
+                <div class="form-group col-3">
+                    <input class="form-control" id="mon3" placeholder="Điểm môn 3">
+                </div>
+            </div>
+
+            <button class="btn btn-primary" id="btnTinh">Kết quả</button>
+            <div class="alert alert-primary w-50 mt-2">
+                <p id="Ketqua"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TÍNH TIỀN ĐIỆN -->
+    <div class="container ">
+        <div class="mt-5">
+            <h4 class="text-center my-3">TÍNH TIỀN ĐIỆN</h4>
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <input class="form-control" id="hoten" placeholder="Họ và tên">
+                </div>
+                <div class="form-group col-3 ml-3">
+                    <input class="form-control" id="Kw" placeholder="Số Kw">
+                </div>
+            </div>
+            <button class="btn btn-primary" id="btnTinh_td">Kết quả</button>
+            <div class="alert alert-primary w-50 mt-2">
+                <p id="Tien_dien"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TÍNH THUẾ -->
+    <div class="container">
+        <div class="mt-5">
+            <h4 class="text-center my-3">TÍNH THUẾ</h4>
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <input class="form-control" id="ho_ten" placeholder="Họ và tên">
+                </div>
+                <div class="form-group col-3 mx-3">
+                    <input class="form-control" id="year" placeholder="Tổng thu nhập năm">
+                </div>
+                <div class="form-group col-3">
+                    <input class="form-control" id="So_nguoi" placeholder="Số người phụ thuộc">
+                </div>
+            </div>
+            <button class="btn btn-primary" id="btnTinh_thue">Kết quả</button>
+            <div class="alert alert-primary w-50 mt-2">
+                <p id="Tinh_thue"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TÍNH TIỀN CÁP -->
+    <div class="container">
+        <div class="mt-5">
+            <h4 class="text-center my-3">TÍNH TIỀN CÁP</h4>
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <select id="luachon" class="form-control form-luachon">
+                        <option selected>Chọn loại khách hàng</option>
+                        <option value="nhadan">Nhà dân</option>
+                        <option value="doanh_nghiep">Doanh nghiệp</option>
+                    </select>
+                </div>
+                <div class="form-group col-3 mx-3">
+                    <input class="form-control" id="ma_so" placeholder="Mã khách hàng">
+                </div>
+                <div class="form-group col-3">
+                    <input class="form-control" id="So_kenh" placeholder="Số kênh cao cấp">
+                </div>
+                <div id="So_ketnoi" class="form-group col-3 hidden">
+                    <input class="form-control" id="so_ket_noi" placeholder="Số kết nối">
+                </div>
+            </div>
+            <button class="btn btn-primary" id="btnTinh_cap">Kết quả</button>
+            <div class="alert alert-primary w-50 mt-2">
+                <p id="Tinh_cap"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $('.form-luachon').change(function () {
+            var responseID = $(this).val();
+            if (responseID == "doanh_nghiep") {
+                $('#So_ketnoi').removeClass('hidden');
+                $('#So_ketnoi').addClass('show');
+            }
+            else {
+                $('#So_ketnoi').removeClass('show');
+                $('#So_ketnoi').addClass('hidden');
+            }
+        });
+    </script>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
