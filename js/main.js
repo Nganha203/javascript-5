@@ -101,22 +101,22 @@ function tien_thue(thunhap_nam, nguoi_phu_thuoc){
         Thu_nhap_chiu_thue = Thu_nhap_chiu_thue*5/100;
     }
     else if(Thu_nhap_chiu_thue > 60000000 && Thu_nhap_chiu_thue <= 120000000){
-        Thu_nhap_chiu_thue = Thu_nhap_chiu_thue*10/100;
+        Thu_nhap_chiu_thue = (Thu_nhap_chiu_thue - 60000000)*10/100 + 60000000*5/100;
     }
     else if(Thu_nhap_chiu_thue > 120000000 && Thu_nhap_chiu_thue <= 210000000){
-        Thu_nhap_chiu_thue = Thu_nhap_chiu_thue*15/100;
+        Thu_nhap_chiu_thue = (Thu_nhap_chiu_thue - 120000000)*15/100 + (120000000 - 60000000)*10/100 + 60000000*5/100;
     }
     else if(Thu_nhap_chiu_thue > 210000000 && Thu_nhap_chiu_thue <= 384000000){
-        Thu_nhap_chiu_thue = Thu_nhap_chiu_thue*20/100;
+        Thu_nhap_chiu_thue = (Thu_nhap_chiu_thue - 210000000)*20/100 + (210000000 - 120000000)*15/100 + (120000000 - 60000000)*10/100 + 60000000*5/100;
     }
     else if(Thu_nhap_chiu_thue > 384000000 && Thu_nhap_chiu_thue <= 624000000){
-        Thu_nhap_chiu_thue = Thu_nhap_chiu_thue*25/100;
+        Thu_nhap_chiu_thue = (Thu_nhap_chiu_thue - 384000000)*25/100 + (384000000 - 210000000)*20/100 + (210000000 - 120000000)*15/100 + (120000000 - 60000000)*10/100 + 60000000*5/100;
     }
     else if(Thu_nhap_chiu_thue > 624000000 && Thu_nhap_chiu_thue <= 960000000){
-        Thu_nhap_chiu_thue = Thu_nhap_chiu_thue*30/100;
+        Thu_nhap_chiu_thue = (Thu_nhap_chiu_thue - 624000000)*30/100 + (624000000 - 384000000)*25/100 + (384000000 - 210000000)*20/100 + (210000000 - 120000000)*15/100 + (120000000 - 60000000)*10/100 + 60000000*5/100;
     }
     else {
-        Thu_nhap_chiu_thue = Thu_nhap_chiu_thue*35/100;
+        Thu_nhap_chiu_thue = (Thu_nhap_chiu_thue - 960000000)*35/100 + (960000000 - 624000000)*30/100 + (624000000 - 384000000)*25/100 + (384000000 - 210000000)*20/100 + (210000000 - 120000000)*15/100 + (120000000 - 60000000)*10/100 + 60000000*5/100;
     }
     
     
